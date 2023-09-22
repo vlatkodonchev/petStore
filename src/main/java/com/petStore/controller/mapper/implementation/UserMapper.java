@@ -3,7 +3,9 @@ package com.petStore.controller.mapper.implementation;
 import com.petStore.Entity.User;
 import com.petStore.controller.mapper.GeneralMapper;
 import com.petStore.dto.UserDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper implements GeneralMapper<User, UserDTO> {
     @Override
     public UserDTO entityToDto(User user) {

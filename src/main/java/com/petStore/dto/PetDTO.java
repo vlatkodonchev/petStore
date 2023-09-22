@@ -1,16 +1,29 @@
 package com.petStore.dto;
 
-import com.petStore.Entity.Money;
 import com.petStore.Entity.Pet;
 import com.petStore.Entity.User;
+import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+@Getter
 public class PetDTO {
+    private Integer id;
     private User owner;
     private String name;
     private Pet.Type type;
     private String description;
-    private Date dateOfBirth;
-    private Money price;
+    private LocalDate dateOfBirth;
+    private int price;
+    private int rating;
+
+    public PetDTO(Integer id, String name, Pet.Type type, String description, LocalDate dateOfBirth, int price, int rating) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.dateOfBirth = dateOfBirth;
+        this.price = price;
+        this.rating = rating;
+    }
 }
