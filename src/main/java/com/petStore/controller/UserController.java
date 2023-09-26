@@ -23,8 +23,4 @@ public class UserController {
         return  userService.getAllUsers();
     }
 
-    @PostMapping("/buy")
-    public void buy() {
-        userService.buyPet();
-    }
 }

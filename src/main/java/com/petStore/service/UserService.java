@@ -11,6 +11,4 @@ public interface UserService {
     ResponseEntity<List<UserDTO>> createUsers(List<UserDTO> users);
 
     ResponseEntity<List<UserDTO>> getAllUsers();
-
-    void buyPet();
 }

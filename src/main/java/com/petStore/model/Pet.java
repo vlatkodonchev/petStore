@@ -1,4 +1,4 @@
-package com.petStore.Entity;
+package com.petStore.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,14 +15,21 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne
     private User owner;
+
     private String name;
+
     @Enumerated(EnumType.STRING)
     private Type type;
+
     private String description;
+
     private LocalDate dateOfBirth;
+
     private int price;
+
     private int rating;
 
 
@@ -49,6 +56,11 @@ public class Pet {
     }
 
     public boolean checkRatingRange() {
+        //cats don`t have rating, so we set it to 0
+        if (this.type.equals(Type.Cat)) {
+            this.rating = 0;
+            return false;
+        }
         return this.rating > 10 || this.rating < 0;
     }
 }

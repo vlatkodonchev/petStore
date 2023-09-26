@@ -1,9 +1,9 @@
 package com.petStore.repository;
 
-import com.petStore.model.User;
+import com.petStore.model.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface PurchasePetRepository extends JpaRepository<Pet, Integer> {
 }

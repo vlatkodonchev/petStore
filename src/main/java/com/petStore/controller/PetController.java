@@ -1,6 +1,6 @@
 package com.petStore.controller;
 
-import com.petStore.Entity.Pet;
+import com.petStore.model.Pet;
 import com.petStore.dto.PetDTO;
 import com.petStore.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;

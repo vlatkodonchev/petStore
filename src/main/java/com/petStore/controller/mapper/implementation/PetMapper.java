@@ -1,6 +1,6 @@
 package com.petStore.controller.mapper.implementation;
 
-import com.petStore.Entity.Pet;
+import com.petStore.model.Pet;
 import com.petStore.controller.mapper.GeneralMapper;
 import com.petStore.dto.PetDTO;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.petStore.Entity;
+package com.petStore.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -14,11 +14,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(mappedBy = "owner")
-    private List<Pet> petsOwned;
+
     private String firstName;
+
     private String lastName;
+
     private String email;
+
     private int budget;
 
     public User(String firstName, String lastName, String email, int budget) {

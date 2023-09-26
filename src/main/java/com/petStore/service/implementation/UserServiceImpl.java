@@ -1,7 +1,7 @@
 package com.petStore.service.implementation;
 
-import com.petStore.Entity.Pet;
-import com.petStore.Entity.User;
+import com.petStore.model.Pet;
+import com.petStore.model.User;
 import com.petStore.controller.mapper.implementation.UserMapper;
 import com.petStore.dto.UserDTO;
 import com.petStore.repository.PetRepository;
@@ -20,8 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    PetRepository petRepository;
+
     @Autowired
     UserMapper userMapper;
 
@@ -47,24 +46,6 @@ public class UserServiceImpl implements UserService {
             return new ResponseEntity<>(userDTOList, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @Override
-    public void buyPet() {
-        List<User> allUsers = userRepository.findAll();
-        List<Pet> allPets = petRepository.findAll();
-        if (!allUsers.isEmpty() || !allPets.isEmpty()) {
-            for (Pet pet : allPets) {
-                for (User user : allUsers) {
-                    if (pet.getOwner() == null && user.getBudget() >= pet.getPrice()) {
-                        pet.setOwner(user);
-                        user.setBudget(user.getBudget() - pet.getPrice());
-                    }
-                }
-            }
-            userRepository.saveAll(allUsers);
-            petRepository.saveAll(allPets);
         }
     }
 }

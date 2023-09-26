@@ -1,7 +1,7 @@
 package com.petStore.dto;
 
-import com.petStore.Entity.Pet;
-import com.petStore.Entity.User;
+import com.petStore.model.Pet;
+import com.petStore.model.User;
 import lombok.Getter;
 
 import java.time.LocalDate;

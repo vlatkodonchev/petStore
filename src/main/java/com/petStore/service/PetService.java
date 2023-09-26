@@ -1,6 +1,6 @@
 package com.petStore.service;
 
-import com.petStore.Entity.Pet;
+import com.petStore.model.Pet;
 import com.petStore.dto.PetDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
