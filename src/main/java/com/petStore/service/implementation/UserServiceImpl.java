@@ -1,5 +1,6 @@
 package com.petStore.service.implementation;
 
+import com.petStore.exception.ResourceNotFoundException;
 import com.petStore.model.Pet;
 import com.petStore.model.User;
 import com.petStore.controller.mapper.implementation.UserMapper;
@@ -41,11 +42,14 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<User> users = userRepository.findAll();
 
-        if (!users.isEmpty()) {
-            List<UserDTO> userDTOList = users.stream().map(user -> userMapper.entityToDto(user)).toList();
-            return new ResponseEntity<>(userDTOList, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//      different approach with returning custom exception
+        if (users.isEmpty()) {
+            throw new ResourceNotFoundException("No users found");
         }
+
+        List<UserDTO> userDTOList = users.stream()
+                .map(user -> userMapper.entityToDto(user))
+                .toList();
+        return new ResponseEntity<>(userDTOList, HttpStatus.OK);
     }
 }

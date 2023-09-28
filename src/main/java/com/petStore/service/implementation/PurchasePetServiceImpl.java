@@ -27,12 +27,12 @@ public class PurchasePetServiceImpl implements PurchasePetService {
     HistoryLogRepository historyLogRepository;
 
     @Override
-    public Object purchasePet() {
+    public HistoryLog purchasePets() {
         List<Pet> allPets = petRepository.findAll();
         List<User> allUsers = userRepository.findAll();
 
         if (allPets.isEmpty() || allUsers.isEmpty()) {
-            return new ResourceNotFoundException("No user or no pet is found");
+            throw new ResourceNotFoundException("No user or no pet is found");
         }
         HistoryLog historyLog = new HistoryLog();
         int countSuccessfulAttempt = 0;
@@ -65,6 +65,6 @@ public class PurchasePetServiceImpl implements PurchasePetService {
         userRepository.saveAll(allUsers);
         petRepository.saveAll(allPets);
         historyLogRepository.save(historyLog);
-        return null;
+        return historyLog;
     }
 }

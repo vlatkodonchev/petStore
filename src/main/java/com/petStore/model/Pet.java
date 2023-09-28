@@ -3,6 +3,7 @@ package com.petStore.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -14,14 +15,18 @@ import java.time.Period;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne
     private User owner;
 
+    @NonNull
     private String name;
 
+    // This can be also implemented with creating two separate classes(Dog and Cat) which will extend the Pet class
+    // and the Dog class will have separate property rating
     @Enumerated(EnumType.STRING)
+    @NonNull
     private Type type;
 
     private String description;

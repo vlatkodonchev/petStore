@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class PetMapper implements GeneralMapper<Pet, PetDTO> {
     @Override
     public PetDTO entityToDto(Pet pet) {
-        return new PetDTO(pet.getId(), pet.getName(), pet.getType(), pet.getDescription(), pet.getDateOfBirth(),
+        return new PetDTO(pet.getName(), pet.getType(), pet.getDescription(), pet.getDateOfBirth(),
                 pet.getPrice(), pet.getRating());
     }
 

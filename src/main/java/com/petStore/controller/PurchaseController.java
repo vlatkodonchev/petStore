@@ -1,5 +1,6 @@
 package com.petStore.controller;
 
+import com.petStore.model.HistoryLog;
 import com.petStore.service.PurchasePetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class PurchaseController {
     @Autowired
     private PurchasePetService purchasePetService;
     @PostMapping("/buyPets")
-    public ResponseEntity<Object> buyPet() {
-        return new ResponseEntity<>(purchasePetService.purchasePet(), HttpStatus.OK);
+    public ResponseEntity<HistoryLog> buyPet() {
+        return new ResponseEntity<>(purchasePetService.purchasePets(), HttpStatus.OK);
     }
 }
