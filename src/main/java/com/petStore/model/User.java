@@ -3,11 +3,10 @@ package com.petStore.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.NonNull;
 
 @Entity
-@Table
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Data
 @NoArgsConstructor
 public class User {
@@ -15,10 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     private String firstName;
 
+    @NonNull
     private String lastName;
 
+    @NonNull
     private String email;
 
     private int budget;

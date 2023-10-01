@@ -10,6 +10,7 @@ import com.petStore.repository.UserRepository;
 import com.petStore.service.PurchasePetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,14 +19,15 @@ import java.util.List;
 public class PurchasePetServiceImpl implements PurchasePetService {
 
     @Autowired
-    private PetRepository petRepository;
+    PetRepository petRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
     HistoryLogRepository historyLogRepository;
 
+    @Transactional
     @Override
     public HistoryLog purchasePets() {
         List<Pet> allPets = petRepository.findAll();

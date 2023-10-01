@@ -1,5 +1,6 @@
 package com.petStore.dto;
 
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -12,6 +13,7 @@ public class UserDTO {
     private String lastName;
 
     @NonNull
+    @Column(unique = true)
     private String email;
 
     private int budget;

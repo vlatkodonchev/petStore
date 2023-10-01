@@ -15,6 +15,7 @@ public class PurchaseController {
 
     @Autowired
     private PurchasePetService purchasePetService;
+
     @PostMapping("/buyPets")
     public ResponseEntity<HistoryLog> buyPet() {
         return new ResponseEntity<>(purchasePetService.purchasePets(), HttpStatus.OK);
