@@ -1,6 +1,7 @@
 package com.petStore.service.implementation;
 
 import com.petStore.exception.ResourceNotFoundException;
+import com.petStore.model.Cat;
 import com.petStore.model.HistoryLog;
 import com.petStore.model.Pet;
 import com.petStore.model.User;
@@ -46,15 +47,7 @@ public class PurchasePetServiceImpl implements PurchasePetService {
                     pet.setOwner(user);
                     user.setBudget(user.getBudget() - pet.getPrice());
                     petSuccessfullyBought = true;
-                    if (pet.getType().equals(Pet.Type.Cat)) {
-                        System.out.println("Meow, cat " + pet.getName()
-                                + " has owner " + user.getFirstName()
-                                + " " + user.getLastName());
-                    } else {
-                        System.out.println("Woof, dog " + pet.getName()
-                                + " has owner " + user.getFirstName()
-                                + " " + user.getLastName());
-                    }
+                    printSuccessfulPurchase(pet, user);
                 }
             }
             if (petSuccessfullyBought) {
@@ -68,5 +61,18 @@ public class PurchasePetServiceImpl implements PurchasePetService {
         petRepository.saveAll(allPets);
         historyLogRepository.save(historyLog);
         return historyLog;
+    }
+
+    private void printSuccessfulPurchase(Pet pet, User user) {
+        if (pet instanceof Cat) {
+            System.out.println("Meow, cat" + pet.getName()
+            + "has owner " + user.getFirstName()
+                    + " " + user.getLastName());
+
+        } else {
+            System.out.println("Woof, dog " + pet.getName()
+                    + " has owner " + user.getFirstName()
+                    + " " + user.getLastName());
+        }
     }
 }

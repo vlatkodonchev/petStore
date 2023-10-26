@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public interface PetService {
-    ResponseEntity<List<Pet>> createPets(List<PetDTO> pets);
+    List<Pet> createPets(List<PetDTO> pets);
 
-    ResponseEntity<List<PetDTO>> getAllPets();
+    List<PetDTO> getAllPets();
 }

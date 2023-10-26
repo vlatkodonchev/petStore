@@ -16,9 +16,9 @@ public class UserDTO {
     @Column(unique = true)
     private String email;
 
-    private int budget;
+    private double budget;
 
-    public UserDTO(String firstName, String lastName, String email, int budget) {
+    public UserDTO(String firstName, String lastName, String email, double budget) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

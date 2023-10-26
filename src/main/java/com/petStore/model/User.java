@@ -23,9 +23,9 @@ public class User {
     @NonNull
     private String email;
 
-    private int budget;
+    private double budget;
 
-    public User(String firstName, String lastName, String email, int budget) {
+    public User(String firstName, String lastName, String email, double budget) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

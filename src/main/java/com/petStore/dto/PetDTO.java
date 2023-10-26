@@ -1,39 +1,43 @@
 package com.petStore.dto;
 
-import com.petStore.model.Pet;
-import com.petStore.model.User;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class PetDTO {
-
-    private Long id;
-
-    private User owner;
 
     @NonNull
     private String name;
 
     @NonNull
-    private Pet.Type type;
+    private String type;
 
     private String description;
 
+    @NonNull
     private LocalDate dateOfBirth;
 
-    private int price;
+    private double price;
 
     private int rating;
 
-    public PetDTO(String name, Pet.Type type, String description, LocalDate dateOfBirth, int price, int rating) {
+    public PetDTO(String name, String type, String description, LocalDate dateOfBirth, double price, int rating) {
         this.name = name;
         this.type = type;
         this.description = description;
         this.dateOfBirth = dateOfBirth;
         this.price = price;
         this.rating = rating;
+    }
+
+    public PetDTO(String name, String type, String description, LocalDate dateOfBirth, double price) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.dateOfBirth = dateOfBirth;
+        this.price = price;
     }
 }

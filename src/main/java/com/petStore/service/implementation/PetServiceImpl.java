@@ -1,5 +1,6 @@
 package com.petStore.service.implementation;
 
+import com.petStore.model.Dog;
 import com.petStore.model.Pet;
 import com.petStore.controller.mapper.implementation.PetMapper;
 import com.petStore.dto.PetDTO;
@@ -23,34 +24,30 @@ public class PetServiceImpl implements PetService {
 
     @Transactional
     @Override
-    public ResponseEntity<List<Pet>> createPets(List<PetDTO> petsDTO) {
+    public List<Pet> createPets(List<PetDTO> petsDTO) {
         if (!petsDTO.isEmpty() && petsDTO.size() <= 20) {
             List<Pet> pets = new ArrayList<>();
             for (PetDTO petDTO : petsDTO) {
                 Pet pet = petMapper.dtoToEntity(petDTO);
-                if (pet.checkRatingRange()) {
-                    return new ResponseEntity<>(HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE);
-                }
-                pet.calculatePrice();
                 pets.add(pet);
             }
             petRepository.saveAll(pets);
-            return new ResponseEntity<>(pets, HttpStatus.CREATED);
+            return pets;
         } else {
-            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ArrayList<>();
         }
     }
 
     @Override
-    public ResponseEntity<List<PetDTO>> getAllPets() {
+    public List<PetDTO> getAllPets() {
         List<Pet> pets = petRepository.findAll();
         if (!pets.isEmpty()) {
             List<PetDTO> petDTOList = pets.stream()
                     .map(pet -> petMapper.entityToDto(pet))
                     .toList();
-            return new ResponseEntity<>(petDTOList, HttpStatus.OK);
+            return petDTOList;
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ArrayList<>();
         }
     }
 }
